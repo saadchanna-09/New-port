@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050608;
+  color: #eaf6fb;
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Blueprint dot-grid, generic technical-schematic background (original, no external art) */
+.bg-mesh {
+  background-image: radial-gradient(circle at 1px 1px, rgba(0, 210, 255, 0.14) 1px, transparent 0);
+  background-size: 34px 34px;
+}
+
+/* Fine HUD ruled grid, used behind hero/sections at low opacity */
+.bg-hud-grid {
+  background-image:
+    linear-gradient(rgba(0, 210, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 210, 255, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Glassmorphism card base — holographic projection panel */
+.glass {
+  background: rgba(10, 13, 16, 0.55);
+  border: 1px solid rgba(0, 210, 255, 0.16);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-hover {
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.glass-hover:hover {
+  border-color: rgba(0, 210, 255, 0.5);
+  box-shadow: 0 0 60px -12px rgba(0, 210, 255, 0.45);
+}
+
+/* Corner-bracket HUD frame, drawn with pseudo-elements — crosshair/targeting motif */
+.hud-frame {
+  position: relative;
+}
+.hud-frame::before,
+.hud-frame::after,
+.hud-frame > .hud-corner-tl,
+.hud-frame > .hud-corner-br {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: rgba(0, 210, 255, 0.55);
+  pointer-events: none;
+}
+.hud-frame::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+.hud-frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+/* Section eyebrow label */
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: #00d2ff;
+}
+
+/* Vertical scan-line sweep, used sparingly for boot/loading states */
+.scan-line {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.scan-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 210, 255, 0.08),
+    transparent
+  );
+  animation: scan 4s linear infinite;
+}
+
+.text-glow {
+  text-shadow: 0 0 24px rgba(0, 210, 255, 0.55);
+}
+
+::selection {
+  background: #00d2ff;
+  color: #050608;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #050608;
+}
+::-webkit-scrollbar-thumb {
+  background: #142127;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00d2ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
