@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -22,7 +23,7 @@ function AnimatedHeadline({ text }: { text: string }) {
       variants={container}
       initial="hidden"
       animate="show"
-      className="font-display text-[13vw] leading-[0.95] tracking-tight text-ink sm:text-[7rem] md:text-[8rem]"
+      className="font-display text-[11vw] leading-[0.95] tracking-tight text-ink max-w-full break-words sm:text-[6rem] md:text-[7.5rem]"
       aria-label={text}
     >
       {text.split("").map((char, i) => (
@@ -57,7 +58,6 @@ export default function Hero() {
       ref={sectionRef}
       className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-mesh px-6 sm:px-12"
     >
-      {/* Mouse-tracking spatial glow sphere */}
       <div
         className="pointer-events-none absolute inset-0 transition-[background] duration-300 ease-out"
         style={{
@@ -74,7 +74,6 @@ export default function Hero() {
         aria-hidden
       />
 
-      {/* Generic HUD energy-core motif — concentric rings + spokes, original SVG */}
       <div
         className="pointer-events-none absolute right-[-6%] top-1/2 hidden h-[520px] w-[520px] -translate-y-1/2 opacity-40 md:block lg:right-[2%]"
         aria-hidden
@@ -94,27 +93,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      <div className="absolute top-8 left-6 right-6 flex items-center justify-between sm:left-12 sm:right-12">
-        <motion.span
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="eyebrow"
-        >
-          {profile.location}
-        </motion.span>
-        <motion.a
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          href="#contact"
-          className="eyebrow border-b border-signal-cyan/40 pb-0.5 hover:text-signal-violet hover:border-signal-violet transition-colors"
-        >
-          Get in touch →
-        </motion.a>
-      </div>
-
-      <div className="relative z-10 mx-auto w-full max-w-6xl">
+      <div className="relative z-10 mx-auto w-full max-w-6xl pt-24 sm:pt-16">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -144,6 +123,7 @@ export default function Hero() {
             className="rounded-full bg-signal-gradient px-6 py-3 font-body text-sm font-medium text-void shadow-glow transition-transform hover:scale-105"
           >
             View Projects
+          
           </a>
           <a
             href={profile.github}
@@ -151,7 +131,7 @@ export default function Hero() {
             rel="noreferrer"
             className="rounded-full border border-edge px-6 py-3 font-body text-sm font-medium text-ink transition-colors hover:border-signal-cyan/50 hover:text-signal-cyan"
           >
-            GitHub ↗
+            GitHub 
           </a>
         </motion.div>
       </div>
